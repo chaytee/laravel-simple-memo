@@ -37,6 +37,10 @@ class HomeController extends Controller
     {
         $posts= $request->all();
 
+        //何も入力しなくてもボタンを押せるのでバリデーションを作成
+        //メモ入力は必須です input nameと一致
+        $request->validate(['content' => 'required']);
+
         //ここからトランザクション
         //insertGetIdはデータをゲットしてIDに返す
         DB::transaction(function() use($posts) {
@@ -95,6 +99,8 @@ class HomeController extends Controller
     public function update(Request $request)
     {
         $posts= $request->all();
+
+        $request->validate(['content' => 'required']);
         //dump dieの略　→メソッドの引数の取った値を展開して止める→データ確認
         //dd(\Auth::id());
         //データベースを入れるinsert(データベースのカラム名=>ユーザーが入れてきたもの)配列

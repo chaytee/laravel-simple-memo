@@ -1,0 +1,18 @@
+@charset "utf-8";
+.my-card-title {
+    height: 48px;
+}
+.my-card-body {
+    height: calc(100vh - (55px + 48px));
+}
+/* 一行にする */
+.elipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@media screen and (max-width: 768px) {
+    .my-card-body {
+        height: auto;
+    }
+}

@@ -5,10 +5,13 @@
 	<div class="card">
 		<div class="card-header">新規メモ作成</div>
         {{--route('store')と書くと/storeになる urlが変わってもOK--}}
-		<form class="card-body" action="{{ route('store') }}" method="POST">
+		<form class="card-body my-card-body" action="{{ route('store') }}" method="POST">
 			@csrf
 			<div class="form-group">
 				<textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力"></textarea>
+                @error('content')
+                    <div class="alert-danger alert mt-3">メモを入力してください！</div>
+                @enderror
 			</div>
             {{--複数のtagsから単数のtagを回す。name="tags[]"とすると配列で取得可能になる→forechで回す--}}
             @foreach ($tags as $t)
